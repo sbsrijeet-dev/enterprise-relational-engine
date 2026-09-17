@@ -1,0 +1,35 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Nn]onlinear/
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+~$*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.pyo
+
+# Virtual Environments
+venv/
+env/
+.env
+
+# Editor & IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Large binary database dumps (keep schemas and DDLs only)
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm

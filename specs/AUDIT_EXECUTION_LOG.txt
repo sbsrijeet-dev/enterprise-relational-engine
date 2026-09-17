@@ -1,0 +1,137 @@
+===========================================================================
+  UNIVERSAL FORENSIC VERIFICATION BATTERY — AUDIT EXECUTION TRANSCRIPT
+===========================================================================
+Target Database : vanguard_clean.sqlite (63.43 MB)
+Target SQL Dump : vanguard_clean.sql (115.72 MB, 393,840 lines)
+CSV Directory   : Clean_CSVs (11 relational tables)
+Operating System: Windows x86_64 / Python 3.13.14 / SQLite 3.50.4
+Security Protocol: Offline Zero-Trust Airlock (AES-256 / PBKDF2-480k)
+
+===========================================================================
+  SUITE 1: PRAGMA HEALTH & RELATIONAL INTEGRITY
+===========================================================================
+  [PASS] PRAGMA integrity_check (Result: ok)
+  [PASS] PRAGMA quick_check (Result: ok)
+  [PASS] PRAGMA foreign_key_check (0 violations)
+  [PASS] Performance B-Tree Indexes Present (Found 13/13 verified indexes)
+  [PASS] Write-Ahead Logging (WAL) Mode Enabled (journal_mode = wal)
+  [PASS] Synchronous Pragmas (synchronous = 1 / NORMAL)
+
+===========================================================================
+  SUITE 2: DOUBLE-ENTRY LEDGER, INTEGER MINOR UNITS & CURRENCY PARITY
+===========================================================================
+  [PASS] Global Double-Entry Imbalance Equals Exactly $0.00 (0 cents)
+         Debits : $116,735,686.08 (11,673,568,608 cents)
+         Credits: $116,735,686.08 (11,673,568,608 cents)
+         Variance: $0.000000000000
+  [PASS] Native Currency Imbalance: AUD (0 minor units imbalance)
+  [PASS] Native Currency Imbalance: CAD (0 minor units imbalance)
+  [PASS] Native Currency Imbalance: EUR (0 minor units imbalance)
+  [PASS] Native Currency Imbalance: GBP (0 minor units imbalance)
+  [PASS] Native Currency Imbalance: JPY (0 whole yen imbalance)
+  [PASS] Native Currency Imbalance: USD (0 minor units imbalance)
+  [PASS] Non-Negative Financial Amounts (0 negative ledger values)
+  [PASS] Cancelled / Voided Transactions Balance (Debits == Credits == $0.00)
+  [PASS] Japanese Yen Whole-Integer Preservation (0 fractional units)
+
+===========================================================================
+  SUITE 3: REFERENTIAL INTEGRITY & ZERO ORPHANS
+===========================================================================
+  [PASS] Parent-to-Child DAG Table Ordering Validated (0 circular dependencies)
+  [PASS] Foreign Key Integrity: accounts -> divisions (0 orphans)
+  [PASS] Foreign Key Integrity: accounts -> entities_customers (0 orphans)
+  [PASS] Foreign Key Integrity: catalog_items -> divisions (0 orphans)
+  [PASS] Foreign Key Integrity: settlement_batches -> divisions (0 orphans)
+  [PASS] Foreign Key Integrity: transactions -> divisions (0 orphans)
+  [PASS] Foreign Key Integrity: transactions -> entities_customers (0 orphans)
+  [PASS] Foreign Key Integrity: transactions -> settlement_batches (0 orphans)
+  [PASS] Foreign Key Integrity: transactions -> currencies (0 orphans)
+  [PASS] Foreign Key Integrity: transaction_items -> transactions (0 orphans)
+  [PASS] Foreign Key Integrity: transaction_items -> catalog_items (0 orphans)
+  [PASS] Foreign Key Integrity: ledger_entries -> transactions (0 orphans)
+  [PASS] Foreign Key Integrity: ledger_entries -> accounts (0 orphans)
+  [PASS] Foreign Key Integrity: disputes_claims -> transactions (0 orphans)
+  [PASS] 1:1 Dispute Mapping Consistency (746 disputes verified)
+
+===========================================================================
+  SUITE 4: ARTIFACT ALIGNMENT & CSV EXPORT PARITY
+===========================================================================
+  [PASS] Clean CSV Exists: divisions.csv (Row Parity: 4/4, 0 delta)
+  [PASS] Clean CSV Exists: currencies.csv (Row Parity: 6/6, 0 delta)
+  [PASS] Clean CSV Exists: exchange_rates.csv (Row Parity: 23,406/23,406, 0 delta)
+  [PASS] Clean CSV Exists: entities_customers.csv (Row Parity: 5,001/5,001, 0 delta)
+  [PASS] Clean CSV Exists: accounts.csv (Row Parity: 1,268/1,268, 0 delta)
+  [PASS] Clean CSV Exists: catalog_items.csv (Row Parity: 13/13, 0 delta)
+  [PASS] Clean CSV Exists: settlement_batches.csv (Row Parity: 3,901/3,901, 0 delta)
+  [PASS] Clean CSV Exists: transactions.csv (Row Parity: 75,000/75,000, 0 delta)
+  [PASS] Clean CSV Exists: transaction_items.csv (Row Parity: 75,000/75,000, 0 delta)
+  [PASS] Clean CSV Exists: ledger_entries.csv (Row Parity: 209,203/209,203, 0 delta)
+  [PASS] Clean CSV Exists: disputes_claims.csv (Row Parity: 746/746, 0 delta)
+  [PASS] Column Header Parity across all 11 CSV files (100% matched)
+
+===========================================================================
+  SUITE 5: FILE FORMAT STANDARDS & BYTE-LEVEL PURITY
+===========================================================================
+  [PASS] SQL Dump File Strict Unix LF (\n) (CR: 0, LF: 393,840 bytes)
+  [PASS] SQL Dump UTF-8 Encoding Valid (0 encoding errors)
+  [PASS] CSV Strict Unix LF: divisions.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: currencies.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: exchange_rates.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: entities_customers.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: accounts.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: catalog_items.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: settlement_batches.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: transactions.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: transaction_items.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: ledger_entries.csv (CR: 0)
+  [PASS] CSV Strict Unix LF: disputes_claims.csv (CR: 0)
+
+===========================================================================
+  SUITE 6: DOMAIN, FORMAT, PRIMARY KEY & LOGIC INVARIANTS
+===========================================================================
+  [PASS] Primary Key Uniqueness & Non-Null: divisions (4/4 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: currencies (6/6 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: entities_customers (5,001/5,001 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: accounts (1,268/1,268 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: catalog_items (13/13 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: settlement_batches (3,901/3,901 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: transactions (75,000/75,000 distinct, 0 nulls)
+  [PASS] Primary Key Uniqueness & Non-Null: disputes_claims (746/746 distinct, 0 nulls)
+  [PASS] Law of Row Conservation: transactions (Raw: 75,000 -> Clean: 75,000)
+  [PASS] UTC Timestamp Canon across all 7 temporal tables (0 malformed strings)
+  [PASS] 10-Year Continuous Operating Window (2016-01-01 to 2026-09-05)
+  [PASS] Point-in-Time FX Rates Completeness (3,901 days x 6 currencies = 23,406 rows)
+  [PASS] FX Inverse Rate Mathematical Reciprocity (0 inconsistent pairs)
+  [PASS] AML Structuring Population Verified: $9,900–$9,999 (74 transactions detected)
+  [PASS] AML Structuring 100% Quarantine Enforcement (is_flagged_aml = 1: 74/74)
+  [PASS] Type Affinity Integrity: Integer Cents (typeof = integer across all ledger tables)
+  [PASS] Unicode Purity: Zero Hidden BOM or Zero-Width Control Characters (0 corrupted rows)
+  [PASS] Ternary Logic Safety: Zero NULLs in Status/Categorical Columns
+  [PASS] Sentinel Value Sanitization: Zero Dummy Values (-999, 999999999)
+  [PASS] SOC 1 Imputation Governance: 150 Blank Status Rows Assigned Explicit Audit Flags
+  [PASS] SOC 1 Imputation Governance: 75 Sentinel Amount Rows Assigned Explicit Audit Flags
+  [PASS] Line Item Unit Price Derivation: unit_price = ROUND(total / qty) across all rows
+
+===========================================================================
+  SUITE 7: PRODUCTION VIEWS & FINANCIAL REPORTING PARITY
+===========================================================================
+  [PASS] View 1 Trial Balance Parity: v_general_ledger_journal ($116.7M debits == credits)
+  [PASS] View 2 Annual Timeline Completeness: v_annual_conglomerate_performance (11 Years)
+  [PASS] View 2 Revenue Materiality: GPV $116,718,164.37 | Net Fees $1,925,862.68
+  [PASS] View 3 Division Financial Scorecard: v_division_financial_health (4/4 divisions)
+  [PASS] View 4 Currency Exposure Sum: v_currency_volume_exposure (100.0% coverage)
+  [PASS] View 5 Healthcare Claims Adjudication Math Parity (0 copay discrepancies)
+
+===========================================================================
+  SUITE 8: IN-MEMORY BLANK DATABASE REBUILD STRESS TEST
+===========================================================================
+  [PASS] Blank Database In-Memory Rebuild (10 consecutive passes, 0 errors, 100% clean)
+
+===========================================================================
+  FINAL AUDIT SUMMARY
+===========================================================================
+  Total Checks Passed : 143
+  Total Checks Failed : 0
+  Total Elapsed Time  : 39.78s
+
+>> VERIFICATION STATUS: 100% CLEAN — PACKAGE FULLY CERTIFIED <<
