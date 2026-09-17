@@ -45,23 +45,26 @@ flowchart TD
 
     subgraph VERIFICATION["4. Deterministic Verification Battery (143 Checks)"]
         G["PRAGMA Health & FK Audits"]
-        H["Double-Entry Ledger Balancing ($0.00)"]
+        H["Double-Entry Ledger Balancing (Zero-Float Parity)"]
         I["AML Structuring Quarantine (100%)"]
         J["Byte-Level Line Ending Scans (Unix LF)"]
-        G --- H --- I --- J
+        G --> H --> I --> J
     end
 
     subgraph DISTRIBUTION["5. Certified Production Distribution"]
         K["Production Relational DB (.sqlite)"]
         L["Self-Contained SQL Dump (.sql)"]
         M["Clean Unix LF CSV Directory"]
-        N["Forensic Audit Certificate (SOC 1)"]
+        N["Forensic Audit Certificate (SOC 1 / 143 Passes)"]
     end
 
     A --> B
     C --> D
-    F --> VERIFICATION
-    VERIFICATION --> DISTRIBUTION
+    F --> G
+    J --> K
+    J --> L
+    J --> M
+    J --> N
 ```
 
 ---
